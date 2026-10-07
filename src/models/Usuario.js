@@ -2,61 +2,180 @@ const mongoose = require('mongoose');
 
 const usuarioSchema = new mongoose.Schema(
 {
-    nome: String,
-    email: String,
-    senha: String,
-    perfil: String,
+    nome: {
+        type: String,
+        required: true,
+        trim: true
+    },
+
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true,
+        trim: true
+    },
+
+    senha: {
+        type: String,
+        required: true
+    },
+
+    perfil: {
+        type: String,
+        enum: [
+            'admin',
+            'medico',
+            'paciente'
+        ],
+        default: 'paciente'
+    },
 
     paciente: {
-        documento: String,
+
+        documento: {
+            type: String,
+            trim: true
+        },
+
         dataNascimento: Date,
-        telefone: String,
-        planoSaude: String,
-        contatoEmergencia: String
+
+        telefone: {
+            type: String,
+            trim: true
+        },
+
+        planoSaude: {
+            type: String,
+            trim: true
+        },
+
+        contatoEmergencia: {
+            type: String,
+            trim: true
+        }
     },
 
     medico: {
-        crm: String,
+
+        crm: {
+            type: String,
+            trim: true
+        },
 
         especialidades: [
             {
-                nome: String,
-                descricao: String
+                nome: {
+                    type: String,
+                    trim: true
+                },
+
+                descricao: {
+                    type: String,
+                    trim: true
+                }
             }
         ],
 
         disponibilidades: [
             {
                 data: Date,
+
                 horaInicio: String,
+
                 horaFim: String,
-                status: String
+
+                status: {
+                    type: String,
+                    enum: [
+                        'disponivel',
+                        'ocupado',
+                        'indisponivel'
+                    ],
+                    default: 'disponivel'
+                }
             }
         ]
     },
 
     consultas: [
         {
-            pacienteId: String,
-            medicoId: String,
-            especialidadeId: String,
-            dataHora: Date,
-            status: String,
-            motivo: String,
-            criadoPor: String,
-            canceladoEm: Date,
-            motivoCancelamento: String
+            pacienteId: {
+                type: String,
+                required: true
+            },
+
+            medicoId: {
+                type: String,
+                required: true
+            },
+
+            especialidadeId: {
+                type: String,
+                required: true
+            },
+
+            dataHora: {
+                type: Date,
+                required: true
+            },
+
+            status: {
+                type: String,
+                enum: [
+                    'agendada',
+                    'confirmada',
+                    'cancelada',
+                    'concluida'
+                ],
+                default: 'agendada'
+            },
+
+            motivo: {
+                type: String,
+                default: '',
+                trim: true
+            },
+
+            criadoPor: {
+                type: String
+            },
+
+            canceladoEm: {
+                type: Date,
+                default: null
+            },
+
+            motivoCancelamento: {
+                type: String,
+                default: '',
+                trim: true
+            }
         }
     ],
 
     notificacoes: [
         {
             destinatarioId: String,
+
             consultaId: String,
+
             tipo: String,
-            mensagem: String,
-            lida: Boolean,
-            criadaEm: Date
+
+            mensagem: {
+                type: String,
+                trim: true
+            },
+
+            lida: {
+                type: Boolean,
+                default: false
+            },
+
+            criadaEm: {
+                type: Date,
+                default: Date.now
+            }
         }
     ]
 },
@@ -65,6 +184,10 @@ const usuarioSchema = new mongoose.Schema(
 }
 );
 
-const Usuario = mongoose.model('Usuario', usuarioSchema);
+const Usuario =
+    mongoose.model(
+        'Usuario',
+        usuarioSchema
+    );
 
 module.exports = Usuario;

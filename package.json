@@ -1,12 +1,20 @@
 {
   "name": "api-pessoas",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Aplicação web de gerenciamento de usuários, médicos e consultas com REST, GraphQL, autenticação JWT e MongoDB.",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js"
   },
-  "keywords": [],
+  "keywords": [
+    "node",
+    "express",
+    "mongodb",
+    "mongoose",
+    "graphql",
+    "rest",
+    "jwt"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
@@ -14,6 +22,7 @@
     "@apollo/server": "^5.5.1",
     "@as-integrations/express5": "^1.1.2",
     "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "graphql": "^16.14.2",

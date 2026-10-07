@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="header-content">
+
+            <h1>Sistema de Saúde</h1>
+
+            <nav>
+
+                <a href="dashboard.html">
+                    Início
+                </a>
+
+                <a href="consultas.html">
+                    Consultas
+                </a>
+
+                <a
+                    href="usuarios.html"
+                    id="menuUsuarios"
+                >
+                    Usuários
+                </a>
+
+                <a
+                    href="#"
+                    onclick="logout()"
+                >
+                    Sair
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <main class="container">
+
+        <div class="card">
+
+            <h2 id="boasVindas">
+                Bem-vindo!
+            </h2>
+
+            <p
+                id="dadosUsuario"
+                class="usuario-info"
+            ></p>
+
+        </div>
+
+        <div class="dashboard-grid">
+
+            <div class="dashboard-card">
+
+                <h3>Consultas</h3>
+
+                <p>
+                    Visualize suas consultas.
+                </p>
+
+                <a
+                    href="consultas.html"
+                    class="btn"
+                >
+                    Acessar
+                </a>
+
+            </div>
+
+            <div
+                class="dashboard-card"
+                id="cardUsuarios"
+            >
+
+                <h3>Usuários</h3>
+
+                <p>
+                    Gerencie os usuários cadastrados.
+                </p>
+
+                <a
+                    href="usuarios.html"
+                    class="btn"
+                >
+                    Acessar
+                </a>
+
+            </div>
+
+            <div
+                class="dashboard-card"
+                id="cardCadastrarMedico"
+            >
+
+                <h3>Cadastrar Médico</h3>
+
+                <p>
+                    Cadastre novos médicos no sistema.
+                </p>
+
+                <a
+                    href="cadastrar-medico.html"
+                    class="btn"
+                >
+                    Cadastrar
+                </a>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <h3>Minha conta</h3>
+
+                <p>
+                    Consulte seus dados de acesso.
+                </p>
+
+                <button onclick="mostrarMinhaConta()">
+                    Visualizar
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            id="minhaConta"
+            class="card hidden"
+        >
+
+            <h2>Minha conta</h2>
+
+            <p id="dadosConta"></p>
+
+        </div>
+
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

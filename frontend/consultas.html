@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Consultas</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="header-content">
+
+            <h1>Sistema de Saúde</h1>
+
+            <nav>
+
+                <a href="dashboard.html">
+                    Início
+                </a>
+
+                <a
+                    href="usuarios.html"
+                    id="menuUsuarios"
+                >
+                    Usuários
+                </a>
+
+                <a
+                    href="#"
+                    onclick="logout()"
+                >
+                    Sair
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <main class="container">
+
+        <div
+            class="card"
+            id="cardAgendamento"
+        >
+
+            <h2>Agendar consulta</h2>
+
+            <form id="formConsulta">
+
+                <label for="medicoId">
+                    Médico
+                </label>
+
+                <select
+                    id="medicoId"
+                    required
+                >
+
+                    <option value="">
+                        Selecione um médico
+                    </option>
+
+                </select>
+
+                <label for="especialidadeId">
+                    Especialidade
+                </label>
+
+                <select
+                    id="especialidadeId"
+                    required
+                >
+
+                    <option value="">
+                        Selecione primeiro um médico
+                    </option>
+
+                </select>
+
+                <label for="dataHora">
+                    Data e horário
+                </label>
+
+                <input
+                    type="datetime-local"
+                    id="dataHora"
+                    required
+                >
+
+                <label for="motivo">
+                    Motivo
+                </label>
+
+                <textarea
+                    id="motivo"
+                    placeholder="Informe o motivo da consulta"
+                ></textarea>
+
+                <button type="submit">
+                    Agendar
+                </button>
+
+            </form>
+
+            <div
+                id="mensagem"
+                class="mensagem"
+            ></div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Consultas</h2>
+
+            <div id="listaConsultas">
+
+                <p>
+                    Carregando consultas...
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/consultas.js"></script>
+
+</body>
+
+</html>
